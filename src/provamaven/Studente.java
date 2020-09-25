@@ -7,7 +7,7 @@ public class Studente {
 	Logger logger;
 	
 	int getMatricola() {
-		return 0;
+		return 1;
 	}
 
 }
