@@ -1,0 +1,9 @@
+build:
+  stage: build
+  script:
+    - mvn compile
+
+test-jdk8:
+  stage: test
+  script:
+    - 'mvn -Dmaven.test.failure.ignore=true clean org.jacoco:jacoco-maven-plugin:prepare-agent test org.jacoco:jacoco-maven-plugin:report-aggregate'
