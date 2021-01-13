@@ -1,9 +1,37 @@
+image: maven:latest
+
+include:
+  - template: Code-Quality.gitlab-ci.yml
+
+variables:
+  MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+cache:
+  paths:
+    - .m2/repository/
+    - target/
+
 build:
   stage: build
   script:
-    - mvn compile
+    - mvn $MAVEN_CLI_OPTS compile
 
-test-jdk8:
+test:
   stage: test
   script:
-    - 'mvn -Dmaven.test.failure.ignore=true clean org.jacoco:jacoco-maven-plugin:prepare-agent test org.jacoco:jacoco-maven-plugin:report-aggregate'
+    - mvn $MAVEN_CLI_OPTS test 
+  
+code_quality:
+  artifacts:
+    paths: [gl-code-quality-report.json]
+  
+code_quality_html:
+  extends: code_quality
+  variables:
+    REPORT_FORMAT: html
+  artifacts:
+    paths: [gl-code-quality-report.html]
+
+    
+    
