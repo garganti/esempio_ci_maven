@@ -8,7 +8,7 @@ public class Studente {
 	
 	int getMatricola() {
 		int a = 90;
-		return a;   
+		return 0;   
 	}
 
 }
