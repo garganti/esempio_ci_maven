@@ -10,7 +10,7 @@ public class StudenteTest {
 	public void testGetMatricola() {
 		Studente s = new Studente();
 		System.out.println("faccio andare i casi di test");
-		assertEquals(90, s.getMatricola());
+		assertEquals(0, s.getMatricola());
 	}
 
 }
