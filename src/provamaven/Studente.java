@@ -6,6 +6,8 @@ public class Studente {
 
 	Logger logger;
 
+	INT x;
+
 	// questo restitusice aìl matricola 10
 	int getMatricola() {
 		return 10;   
